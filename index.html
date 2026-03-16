@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kerala Best Deals — Best Prices on Amazon India</title>
+<meta name="description" content="Find the best deals on Amazon India. Search products, compare prices and save money with exclusive offers.">
+<link href="https://fonts.googleapis.com/css2?family=Amazon+Ember:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amz-navy:   #131921;
+    --amz-dark:   #1a2433;
+    --amz-orange: #ff9900;
+    --amz-orange2:#e88c00;
+    --amz-yellow: #febd69;
+    --amz-light:  #232f3e;
+    --amz-teal:   #37475a;
+    --amz-red:    #b12704;
+    --amz-green:  #067d62;
+    --amz-blue:   #007185;
+    --amz-text:   #0f1111;
+    --amz-grey:   #565959;
+    --amz-border: #ddd;
+    --amz-bg:     #eaeded;
+    --amz-white:  #ffffff;
+    --amz-card:   #ffffff;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family: "Amazon Ember", Arial, sans-serif; background:var(--amz-bg);
+         color:var(--amz-text); font-size:14px; }
+
+  /* ── NAVBAR ── */
+  nav { background:var(--amz-navy); position:sticky; top:0; z-index:1000; }
+
+  .nav-top { display:flex; align-items:center; padding:8px 12px; gap:8px; }
+
+  .logo { color:white; font-size:22px; font-weight:700; white-space:nowrap;
+    text-decoration:none; padding:6px 8px; border:2px solid transparent; }
+  .logo span { color:var(--amz-orange); }
+  .logo:hover { border-color:white; }
+  .logo-sub { font-size:10px; color:var(--amz-yellow); display:block; font-weight:400; margin-top:-4px; }
+
+  /* Deliver to */
+  .deliver { color:white; font-size:12px; padding:4px 8px; border:2px solid transparent;
+    cursor:pointer; display:flex; flex-direction:column; white-space:nowrap; }
+  .deliver:hover { border-color:white; }
+  .deliver-label { color:#ccc; font-size:10px; }
+  .deliver-loc { font-weight:700; font-size:13px; }
+
+  /* Search bar */
+  .search-wrap { flex:1; display:flex; height:40px; }
+  .search-category { background:#f3f3f3; border:none; border-radius:4px 0 0 4px;
+    padding:0 8px; font-size:12px; color:#333; cursor:pointer; border-right:1px solid #cdcdcd;
+    min-width:50px; }
+  .search-input { flex:1; border:none; padding:0 12px; font-size:15px; outline:none;
+    color:var(--amz-text); }
+  .search-btn { background:var(--amz-orange); border:none; padding:0 16px;
+    border-radius:0 4px 4px 0; cursor:pointer; display:flex; align-items:center; }
+  .search-btn:hover { background:var(--amz-orange2); }
+  .search-btn svg { width:20px; height:20px; fill:#333; }
+
+  /* Nav links */
+  .nav-links { display:flex; align-items:center; gap:0; color:white; }
+  .nav-link { color:white; text-decoration:none; padding:6px 8px; font-size:13px;
+    border:2px solid transparent; white-space:nowrap; display:flex; flex-direction:column; }
+  .nav-link:hover { border-color:white; }
+  .nav-link-top { font-size:11px; color:#ccc; }
+  .nav-link-bot { font-weight:700; font-size:13px; }
+  .cart-count { background:var(--amz-orange); color:#111; border-radius:50%;
+    width:18px; height:18px; display:inline-flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:700; margin-left:2px; }
+
+  /* Sub nav */
+  .nav-sub { background:var(--amz-light); padding:6px 12px; display:flex;
+    gap:0; align-items:center; overflow-x:auto; }
+  .nav-sub a { color:white; text-decoration:none; padding:6px 10px; font-size:13px;
+    white-space:nowrap; border:2px solid transparent; }
+  .nav-sub a:hover { border-color:white; }
+  .nav-sub a:first-child { font-weight:700; }
+
+  /* ── HERO BANNER ── */
+  .hero { position:relative; overflow:hidden; }
+  .hero-slides { display:flex; transition:transform 0.5s ease; }
+  .hero-slide { min-width:100%; height:350px; position:relative;
+    display:flex; align-items:center; justify-content:flex-start; padding:40px 60px; }
+  .hero-slide-1 { background:linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%); }
+  .hero-slide-2 { background:linear-gradient(135deg, #1b1b2f 0%, #2c2c54 40%, #474787 100%); }
+  .hero-slide-3 { background:linear-gradient(135deg, #0d2137 0%, #1a3a5c 40%, #145da0 100%); }
+  .hero-content { z-index:2; max-width:500px; }
+  .hero-badge { background:var(--amz-orange); color:#111; padding:4px 12px;
+    font-size:12px; font-weight:700; letter-spacing:1px; margin-bottom:12px;
+    display:inline-block; }
+  .hero-title { color:white; font-size:32px; font-weight:700; line-height:1.2;
+    margin-bottom:12px; }
+  .hero-title span { color:var(--amz-orange); }
+  .hero-sub { color:#ccc; font-size:15px; margin-bottom:20px; line-height:1.5; }
+  .hero-btn { background:var(--amz-orange); color:#111; padding:12px 28px;
+    font-size:15px; font-weight:700; border:none; cursor:pointer; border-radius:4px;
+    text-decoration:none; display:inline-block; }
+  .hero-btn:hover { background:var(--amz-orange2); }
+  .hero-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
+    display:flex; gap:8px; }
+  .hero-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.4);
+    cursor:pointer; transition:background 0.2s; }
+  .hero-dot.active { background:var(--amz-orange); }
+  .hero-arrow { position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(255,255,255,0.15); color:white; border:none; width:40px; height:60px;
+    font-size:24px; cursor:pointer; z-index:3; }
+  .hero-arrow:hover { background:rgba(255,255,255,0.3); }
+  .hero-prev { left:0; }
+  .hero-next { right:0; }
+
+  /* ── DEAL TICKER ── */
+  .ticker-wrap { background:var(--amz-orange); padding:6px 0; overflow:hidden; }
+  .ticker-inner { display:flex; animation:ticker 30s linear infinite; white-space:nowrap; }
+  .ticker-item { padding:0 40px; font-size:13px; font-weight:700; color:#111; }
+  @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* ── MAIN LAYOUT ── */
+  .main { max-width:1500px; margin:0 auto; padding:16px 12px; }
+
+  /* ── DEAL CATEGORIES ── */
+  .section { background:white; padding:16px; margin-bottom:16px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  .section-header { display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:14px; }
+  .section-title { font-size:21px; font-weight:700; color:var(--amz-text); }
+  .see-all { color:var(--amz-blue); font-size:13px; text-decoration:none; font-weight:400; }
+  .see-all:hover { text-decoration:underline; color:var(--amz-red); }
+
+  /* Product grid */
+  .product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr));
+    gap:12px; }
+  .product-card { border:1px solid var(--amz-border); padding:12px; cursor:pointer;
+    transition:box-shadow 0.2s; background:white; text-decoration:none; color:inherit;
+    display:block; }
+  .product-card:hover { box-shadow:0 4px 20px rgba(0,0,0,0.15); border-color:#e77600;
+    outline:2px solid #e77600; }
+  .product-img-wrap { width:100%; aspect-ratio:1; display:flex; align-items:center;
+    justify-content:center; margin-bottom:10px; background:#f7f7f7; overflow:hidden; }
+  .product-img { max-width:100%; max-height:100%; object-fit:contain; }
+  .product-img-placeholder { font-size:60px; }
+  .product-name { font-size:13px; color:var(--amz-text); line-height:1.4;
+    margin-bottom:6px; display:-webkit-box; -webkit-line-clamp:2;
+    -webkit-box-orient:vertical; overflow:hidden; }
+  .product-rating { display:flex; align-items:center; gap:4px; margin-bottom:4px; }
+  .stars { color:var(--amz-orange); font-size:12px; }
+  .review-count { color:var(--amz-blue); font-size:12px; }
+  .product-price { font-size:18px; font-weight:700; color:var(--amz-red); }
+  .product-price-orig { font-size:12px; color:var(--amz-grey); text-decoration:line-through; }
+  .product-discount { color:var(--amz-red); font-size:12px; font-weight:700; }
+  .product-badge { background:var(--amz-red); color:white; font-size:10px;
+    padding:2px 6px; font-weight:700; display:inline-block; margin-bottom:6px; }
+  .prime-badge { color:var(--amz-blue); font-size:11px; font-weight:700; }
+
+  /* ── CATEGORY BOXES ── */
+  .cat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:16px; }
+  .cat-box { background:white; padding:16px; cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  .cat-box:hover { box-shadow:0 4px 15px rgba(0,0,0,0.2); }
+  .cat-box-title { font-size:17px; font-weight:700; margin-bottom:12px; }
+  .cat-box-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px; }
+  .cat-item { text-align:center; cursor:pointer; }
+  .cat-item-img { width:100%; aspect-ratio:1; background:#f7f7f7;
+    display:flex; align-items:center; justify-content:center;
+    font-size:36px; margin-bottom:4px; }
+  .cat-item-name { font-size:11px; color:var(--amz-text); }
+  .cat-see-all { color:var(--amz-blue); font-size:12px; margin-top:10px; display:block; }
+
+  /* ── BANNER STRIPS ── */
+  .banner-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:16px; }
+  .banner-item { background:white; padding:20px 16px; text-align:center;
+    cursor:pointer; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+  .banner-item:hover { box-shadow:0 4px 15px rgba(0,0,0,0.2); }
+  .banner-icon { font-size:40px; margin-bottom:10px; }
+  .banner-title { font-size:15px; font-weight:700; margin-bottom:4px; }
+  .banner-sub { font-size:12px; color:var(--amz-grey); }
+  .banner-link { color:var(--amz-blue); font-size:12px; margin-top:6px; display:block; }
+
+  /* ── SEARCH RESULTS ── */
+  .search-results { display:none; }
+  .search-results.active { display:block; }
+  .results-header { background:white; padding:12px 16px; margin-bottom:12px;
+    border-bottom:3px solid var(--amz-orange); display:flex; align-items:center; gap:8px; }
+  .results-count { font-size:18px; color:var(--amz-grey); }
+  .results-count b { color:var(--amz-text); }
+  .result-list { display:flex; flex-direction:column; gap:12px; }
+  .result-item { background:white; padding:16px; display:grid;
+    grid-template-columns:200px 1fr auto; gap:16px; cursor:pointer;
+    box-shadow:0 2px 5px rgba(0,0,0,0.08); text-decoration:none; color:inherit; }
+  .result-item:hover { box-shadow:0 4px 15px rgba(0,0,0,0.15); }
+  .result-img-wrap { display:flex; align-items:center; justify-content:center;
+    background:#f7f7f7; height:200px; font-size:80px; }
+  .result-info { flex:1; }
+  .result-title { font-size:18px; color:#0066c0; margin-bottom:6px; line-height:1.4; }
+  .result-title:hover { text-decoration:underline; color:var(--amz-red); }
+  .result-brand { font-size:13px; color:var(--amz-grey); margin-bottom:6px; }
+  .result-rating { display:flex; align-items:center; gap:6px; margin-bottom:8px; }
+  .result-features { list-style:disc; padding-left:16px; font-size:13px;
+    color:var(--amz-text); line-height:1.8; }
+  .result-price-box { text-align:right; min-width:150px; }
+  .result-price { font-size:24px; font-weight:700; color:var(--amz-red); }
+  .result-mrp { font-size:13px; color:var(--amz-grey); }
+  .result-save { font-size:13px; color:var(--amz-red); font-weight:700; }
+  .btn-add-cart { background:var(--amz-orange); border:1px solid #c78d00;
+    padding:8px 16px; border-radius:20px; cursor:pointer; font-size:13px;
+    font-weight:700; margin-top:8px; width:100%; }
+  .btn-add-cart:hover { background:var(--amz-orange2); }
+  .btn-buy-now { background:#ffd814; border:1px solid #c7a200;
+    padding:8px 16px; border-radius:20px; cursor:pointer; font-size:13px;
+    font-weight:700; margin-top:6px; width:100%; }
+  .btn-buy-now:hover { background:#f7ca00; }
+
+  /* ── LOADING ── */
+  .loading { text-align:center; padding:40px; }
+  .spinner { width:40px; height:40px; border:4px solid #ddd;
+    border-top-color:var(--amz-orange); border-radius:50%;
+    animation:spin 0.8s linear infinite; margin:0 auto 12px; }
+  @keyframes spin { to{transform:rotate(360deg)} }
+
+  /* ── FOOTER ── */
+  footer { background:var(--amz-navy); margin-top:32px; }
+  .footer-back-top { background:var(--amz-teal); text-align:center; padding:14px;
+    color:white; cursor:pointer; font-size:13px; }
+  .footer-back-top:hover { background:#4a6278; }
+  .footer-links { display:grid; grid-template-columns:repeat(4,1fr);
+    gap:24px; padding:32px 60px; }
+  .footer-col h4 { color:white; font-size:14px; margin-bottom:12px; }
+  .footer-col a { color:#ddd; font-size:12px; display:block;
+    margin-bottom:6px; text-decoration:none; }
+  .footer-col a:hover { text-decoration:underline; }
+  .footer-bottom { background:#0f1111; padding:16px; text-align:center; }
+  .footer-logo { color:white; font-size:20px; font-weight:700; margin-bottom:8px; }
+  .footer-bottom p { color:#aaa; font-size:11px; }
+
+  /* ── TELEGRAM CTA ── */
+  .telegram-cta { background:linear-gradient(135deg,#0088cc,#006699);
+    color:white; padding:20px; margin-bottom:16px; display:flex;
+    align-items:center; justify-content:space-between; }
+  .tg-text h3 { font-size:18px; font-weight:700; margin-bottom:4px; }
+  .tg-text p { font-size:13px; opacity:0.9; }
+  .tg-btn { background:white; color:#0088cc; padding:10px 24px;
+    font-weight:700; border:none; cursor:pointer; font-size:14px;
+    border-radius:4px; text-decoration:none; white-space:nowrap; }
+  .tg-btn:hover { background:#f0f0f0; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px) {
+    .nav-top { flex-wrap:wrap; }
+    .deliver { display:none; }
+    .nav-links .nav-link:not(.cart-link) { display:none; }
+    .cat-grid { grid-template-columns:1fr 1fr; }
+    .banner-grid { grid-template-columns:1fr 1fr; }
+    .result-item { grid-template-columns:120px 1fr; }
+    .result-price-box { grid-column:1/-1; text-align:left; }
+    .footer-links { grid-template-columns:1fr 1fr; padding:24px; }
+    .hero-slide { padding:24px; }
+    .hero-title { font-size:22px; }
+  }
+  @media(max-width:480px) {
+    .cat-grid { grid-template-columns:1fr 1fr; }
+    .product-grid { grid-template-columns:1fr 1fr; }
+    .banner-grid { grid-template-columns:1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-top">
+    <a href="/" class="logo">Kerala<span>Best</span>Deals<span class="logo-sub">.com</span></a>
+
+    <div class="deliver">
+      <span class="deliver-label">📍 Deliver to</span>
+      <span class="deliver-loc">Kerala, India</span>
+    </div>
+
+    <div class="search-wrap">
+      <select class="search-category" id="search-cat">
+        <option value="all">All</option>
+        <option value="mobiles">Mobiles</option>
+        <option value="electronics">Electronics</option>
+        <option value="fashion">Fashion</option>
+        <option value="home">Home & Kitchen</option>
+        <option value="beauty">Beauty</option>
+        <option value="books">Books</option>
+        <option value="toys">Toys</option>
+        <option value="sports">Sports</option>
+        <option value="grocery">Grocery</option>
+      </select>
+      <input type="text" class="search-input" id="search-input"
+        placeholder="Search Kerala Best Deals..." autocomplete="off"
+        onkeydown="if(event.key==='Enter') doSearch()">
+      <button class="search-btn" onclick="doSearch()">
+        <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+      </button>
+    </div>
+
+    <div class="nav-links">
+      <a href="#" class="nav-link">
+        <span class="nav-link-top">Hello, Sign in</span>
+        <span class="nav-link-bot">Account & Lists ▾</span>
+      </a>
+      <a href="#" class="nav-link">
+        <span class="nav-link-top">Returns</span>
+        <span class="nav-link-bot">& Orders</span>
+      </a>
+      <a href="https://t.me/sharesmarketssbot" target="_blank" class="nav-link cart-link">
+        <span class="nav-link-top">🤖 Deal</span>
+        <span class="nav-link-bot">Bot <span class="cart-count">🔥</span></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="nav-sub">
+    <a href="#" onclick="searchCategory('deals')">☰ All</a>
+    <a href="#" onclick="searchCategory('today deals')">Today's Deals</a>
+    <a href="#" onclick="searchCategory('mobiles smartphones')">Mobiles</a>
+    <a href="#" onclick="searchCategory('electronics gadgets')">Electronics</a>
+    <a href="#" onclick="searchCategory('fashion clothing')">Fashion</a>
+    <a href="#" onclick="searchCategory('home kitchen')">Home & Kitchen</a>
+    <a href="#" onclick="searchCategory('beauty skincare')">Beauty</a>
+    <a href="#" onclick="searchCategory('books')">Books</a>
+    <a href="#" onclick="searchCategory('sports fitness')">Sports</a>
+    <a href="#" onclick="searchCategory('toys kids')">Toys & Games</a>
+    <a href="#" onclick="searchCategory('grocery food')">Grocery</a>
+    <a href="#" onclick="searchCategory('laptop computer')">Computers</a>
+    <a href="#" onclick="searchCategory('tv home theatre')">TV & Appliances</a>
+  </div>
+</nav>
+
+<!-- ── DEAL TICKER ── -->
+<div class="ticker-wrap">
+  <div class="ticker-inner" id="ticker">
+    <span class="ticker-item">🔥 UP TO 80% OFF — Today's Best Deals</span>
+    <span class="ticker-item">📱 Mobiles from ₹4,999</span>
+    <span class="ticker-item">👟 Footwear deals up to 60% off</span>
+    <span class="ticker-item">🏠 Home & Kitchen — Minimum 40% off</span>
+    <span class="ticker-item">💄 Beauty products from ₹99</span>
+    <span class="ticker-item">📺 Smart TVs up to 50% off</span>
+    <span class="ticker-item">🤖 Join our Telegram bot for instant deal alerts!</span>
+    <span class="ticker-item">🔥 UP TO 80% OFF — Today's Best Deals</span>
+    <span class="ticker-item">📱 Mobiles from ₹4,999</span>
+    <span class="ticker-item">👟 Footwear deals up to 60% off</span>
+    <span class="ticker-item">🏠 Home & Kitchen — Minimum 40% off</span>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- HOME SECTIONS -->
+  <div id="home-sections">
+
+    <!-- Hero Banner -->
+    <div class="hero" style="margin-bottom:16px;">
+      <div class="hero-slides" id="hero-slides">
+        <div class="hero-slide hero-slide-1">
+          <div class="hero-content">
+            <div class="hero-badge">🔥 TODAY'S TOP DEALS</div>
+            <h1 class="hero-title">Up to <span>80% OFF</span><br>on Electronics</h1>
+            <p class="hero-sub">Shop the best deals on mobiles, laptops, TVs and more — all on Amazon India with your exclusive Kerala pricing.</p>
+            <a href="#" onclick="searchCategory('electronics deals discount')" class="hero-btn">Shop Now →</a>
+          </div>
+        </div>
+        <div class="hero-slide hero-slide-2">
+          <div class="hero-content">
+            <div class="hero-badge">👟 FASHION SALE</div>
+            <h1 class="hero-title">Shoes &<br><span>Clothing</span> Deals</h1>
+            <p class="hero-sub">Woodland, Nike, Puma, Adidas — get the best prices with our exclusive affiliate discounts.</p>
+            <a href="#" onclick="searchCategory('shoes fashion discount')" class="hero-btn">Explore Deals →</a>
+          </div>
+        </div>
+        <div class="hero-slide hero-slide-3">
+          <div class="hero-content">
+            <div class="hero-badge">🤖 NEW FEATURE</div>
+            <h1 class="hero-title">Get <span>Instant</span><br>Deal Alerts</h1>
+            <p class="hero-sub">Join our Telegram bot — get notified the moment prices drop on your favourite products.</p>
+            <a href="https://t.me/sharesmarketssbot" target="_blank" class="hero-btn">Join Bot →</a>
+          </div>
+        </div>
+      </div>
+      <button class="hero-arrow hero-prev" onclick="slideHero(-1)">‹</button>
+      <button class="hero-arrow hero-next" onclick="slideHero(1)">›</button>
+      <div class="hero-dots">
+        <div class="hero-dot active" onclick="goSlide(0)"></div>
+        <div class="hero-dot" onclick="goSlide(1)"></div>
+        <div class="hero-dot" onclick="goSlide(2)"></div>
+      </div>
+    </div>
+
+    <!-- Category boxes -->
+    <div class="cat-grid">
+      <div class="cat-box" onclick="searchCategory('mobiles smartphones 5g')">
+        <div class="cat-box-title">Mobiles & Accessories</div>
+        <div class="cat-box-grid">
+          <div class="cat-item"><div class="cat-item-img">📱</div><div class="cat-item-name">Smartphones</div></div>
+          <div class="cat-item"><div class="cat-item-img">🎧</div><div class="cat-item-name">Earbuds</div></div>
+          <div class="cat-item"><div class="cat-item-img">🔋</div><div class="cat-item-name">Powerbanks</div></div>
+          <div class="cat-item"><div class="cat-item-img">📲</div><div class="cat-item-name">Cases</div></div>
+        </div>
+        <a class="cat-see-all" href="#">See all offers →</a>
+      </div>
+      <div class="cat-box" onclick="searchCategory('fashion clothing shoes watches')">
+        <div class="cat-box-title">Fashion Store</div>
+        <div class="cat-box-grid">
+          <div class="cat-item"><div class="cat-item-img">👟</div><div class="cat-item-name">Shoes</div></div>
+          <div class="cat-item"><div class="cat-item-img">👕</div><div class="cat-item-name">Clothing</div></div>
+          <div class="cat-item"><div class="cat-item-img">⌚</div><div class="cat-item-name">Watches</div></div>
+          <div class="cat-item"><div class="cat-item-img">👜</div><div class="cat-item-name">Bags</div></div>
+        </div>
+        <a class="cat-see-all" href="#">See all offers →</a>
+      </div>
+      <div class="cat-box" onclick="searchCategory('home kitchen appliances')">
+        <div class="cat-box-title">Home & Kitchen</div>
+        <div class="cat-box-grid">
+          <div class="cat-item"><div class="cat-item-img">🍳</div><div class="cat-item-name">Cookware</div></div>
+          <div class="cat-item"><div class="cat-item-img">🌀</div><div class="cat-item-name">Mixer</div></div>
+          <div class="cat-item"><div class="cat-item-img">❄️</div><div class="cat-item-name">Refrigerator</div></div>
+          <div class="cat-item"><div class="cat-item-img">🛋️</div><div class="cat-item-name">Furniture</div></div>
+        </div>
+        <a class="cat-see-all" href="#">See all offers →</a>
+      </div>
+      <div class="cat-box" onclick="searchCategory('electronics laptop tv camera')">
+        <div class="cat-box-title">Electronics</div>
+        <div class="cat-box-grid">
+          <div class="cat-item"><div class="cat-item-img">💻</div><div class="cat-item-name">Laptops</div></div>
+          <div class="cat-item"><div class="cat-item-img">📺</div><div class="cat-item-name">Smart TV</div></div>
+          <div class="cat-item"><div class="cat-item-img">📷</div><div class="cat-item-name">Cameras</div></div>
+          <div class="cat-item"><div class="cat-item-img">🎮</div><div class="cat-item-name">Gaming</div></div>
+        </div>
+        <a class="cat-see-all" href="#">See all offers →</a>
+      </div>
+    </div>
+
+    <!-- Telegram CTA -->
+    <div class="telegram-cta">
+      <div class="tg-text">
+        <h3>📲 Get Instant Deal Alerts on Telegram!</h3>
+        <p>Our AI bot monitors 100+ products 24/7 — get notified the moment prices drop. Free to join!</p>
+      </div>
+      <a href="https://t.me/sharesmarketssbot" target="_blank" class="tg-btn">✈ Join @sharesmarketssbot</a>
+    </div>
+
+    <!-- Hot deals section -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">🔥 Today's Hot Deals</div>
+        <a href="#" onclick="searchCategory('best deals discount today')" class="see-all">See all deals →</a>
+      </div>
+      <div class="product-grid" id="hot-deals-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Banner strips -->
+    <div class="banner-grid">
+      <div class="banner-item" onclick="searchCategory('best seller mobiles')">
+        <div class="banner-icon">📱</div>
+        <div class="banner-title">Best Sellers in Mobiles</div>
+        <div class="banner-sub">Top rated smartphones</div>
+        <span class="banner-link">Shop now →</span>
+      </div>
+      <div class="banner-item" onclick="searchCategory('laptop deals discount')">
+        <div class="banner-icon">💻</div>
+        <div class="banner-title">Laptop Deals</div>
+        <div class="banner-sub">From ₹25,999</div>
+        <span class="banner-link">Shop now →</span>
+      </div>
+      <div class="banner-item" onclick="searchCategory('beauty skincare deals')">
+        <div class="banner-icon">💄</div>
+        <div class="banner-title">Beauty & Skincare</div>
+        <div class="banner-sub">Up to 60% off</div>
+        <span class="banner-link">Shop now →</span>
+      </div>
+      <div class="banner-item" onclick="searchCategory('sports fitness equipment')">
+        <div class="banner-icon">🏋️</div>
+        <div class="banner-title">Sports & Fitness</div>
+        <div class="banner-sub">Build your home gym</div>
+        <span class="banner-link">Shop now →</span>
+      </div>
+    </div>
+
+    <!-- More deals -->
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">⚡ Lightning Deals</div>
+        <a href="#" onclick="searchCategory('lightning deals limited time')" class="see-all">See all →</a>
+      </div>
+      <div class="product-grid" id="lightning-grid"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-header">
+        <div class="section-title">🏆 Top Rated Products</div>
+        <a href="#" onclick="searchCategory('top rated best seller')" class="see-all">See all →</a>
+      </div>
+      <div class="product-grid" id="toprated-grid"></div>
+    </div>
+
+  </div><!-- end home-sections -->
+
+  <!-- SEARCH RESULTS -->
+  <div class="search-results" id="search-results">
+    <div class="results-header">
+      <span class="results-count" id="results-count">Searching...</span>
+    </div>
+    <div class="result-list" id="result-list">
+      <div class="loading"><div class="spinner"></div>Finding best deals...</div>
+    </div>
+  </div>
+
+</div><!-- end main -->
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    Back to top
+  </div>
+  <div class="footer-links">
+    <div class="footer-col">
+      <h4>Get to Know Us</h4>
+      <a href="#">About Kerala Best Deals</a>
+      <a href="#">Join our Telegram Bot</a>
+      <a href="#">Price Monitor</a>
+      <a href="#">Blog</a>
+    </div>
+    <div class="footer-col">
+      <h4>Make Money With Us</h4>
+      <a href="#">Amazon Affiliate Program</a>
+      <a href="#">Advertise Your Products</a>
+      <a href="#">Partner With Us</a>
+    </div>
+    <div class="footer-col">
+      <h4>Shop By Category</h4>
+      <a href="#" onclick="searchCategory('mobiles')">Mobiles</a>
+      <a href="#" onclick="searchCategory('laptops')">Laptops</a>
+      <a href="#" onclick="searchCategory('fashion')">Fashion</a>
+      <a href="#" onclick="searchCategory('home kitchen')">Home & Kitchen</a>
+      <a href="#" onclick="searchCategory('beauty')">Beauty</a>
+    </div>
+    <div class="footer-col">
+      <h4>Connect With Us</h4>
+      <a href="https://t.me/sharesmarketssbot" target="_blank">📱 Telegram Bot</a>
+      <a href="#">📧 Contact Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Affiliate Disclosure</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-logo">KeralabestDeals.com</div>
+    <p>© 2026 KeralabestDeals.com | An Amazon Associate — we earn from qualifying purchases.</p>
+    <p style="margin-top:6px;">All product links go to Amazon.in with our affiliate tag. Prices may vary.</p>
+  </div>
+</footer>
+
+<script>
+// ── YOUR AFFILIATE TAG ─────────────────────────────────────────────────────
+const AFFILIATE_TAG = "431308-21";
+
+// ── AMAZON SEARCH URL BUILDER ──────────────────────────────────────────────
+function buildAmazonUrl(keyword) {
+  const encoded = encodeURIComponent(keyword);
+  return `https://www.amazon.in/s?k=${encoded}&tag=${AFFILIATE_TAG}&ref=nb_sb_noss`;
+}
+
+function buildAmazonProductUrl(asin) {
+  return `https://www.amazon.in/dp/${asin}?tag=${AFFILIATE_TAG}`;
+}
+
+// ── SEARCH — redirects to Amazon with affiliate tag ────────────────────────
+function doSearch() {
+  const keyword  = document.getElementById('search-input').value.trim();
+  const category = document.getElementById('search-cat').value;
+  if (!keyword) return;
+
+  const query = category !== 'all' ? `${keyword} ${category}` : keyword;
+  window.open(buildAmazonUrl(query), '_blank');
+}
+
+function searchCategory(keyword) {
+  window.open(buildAmazonUrl(keyword), '_blank');
+  return false;
+}
+
+// ── SAMPLE DEAL PRODUCTS (shown on homepage) ──────────────────────────────
+// These are sample products — they redirect to Amazon search with affiliate tag
+// In production, your bot's price_history.json feeds real products here
+
+const SAMPLE_DEALS = [
+  { name:"boAt Airdopes 141 Bluetooth Earbuds", price:"₹999", orig:"₹2,990", disc:"67%", rating:"4.1", reviews:"2.1L+", emoji:"🎧", search:"boat airdopes 141" },
+  { name:"Redmi 12 5G (Midnight Black, 4GB RAM)", price:"₹10,999", orig:"₹15,999", disc:"31%", rating:"4.2", reviews:"45K+", emoji:"📱", search:"redmi 12 5g" },
+  { name:"Prestige Iris 750W Mixer Grinder", price:"₹1,799", orig:"₹3,295", disc:"45%", rating:"4.3", reviews:"98K+", emoji:"🌀", search:"prestige mixer grinder" },
+  { name:"Wildcraft Ultra Light Backpack 45L", price:"₹1,299", orig:"₹2,499", disc:"48%", rating:"4.0", reviews:"12K+", emoji:"🎒", search:"wildcraft backpack" },
+  { name:"Crompton LED Bulb 9W (10 Pack)", price:"₹199", orig:"₹450", disc:"56%", rating:"4.4", reviews:"54K+", emoji:"💡", search:"crompton led bulb" },
+  { name:"Mamaearth Vitamin C Face Wash 100ml", price:"₹149", orig:"₹299", disc:"50%", rating:"4.3", reviews:"89K+", emoji:"🧴", search:"mamaearth vitamin c face wash" },
+  { name:"HP 15 Intel Core i3 Laptop 8GB RAM", price:"₹34,990", orig:"₹49,990", disc:"30%", rating:"4.1", reviews:"8.5K+", emoji:"💻", search:"hp 15 laptop i3" },
+  { name:"Amazon Echo Dot (5th Gen) Smart Speaker", price:"₹2,999", orig:"₹4,999", disc:"40%", rating:"4.4", reviews:"67K+", emoji:"🔊", search:"amazon echo dot 5th gen" },
+];
+
+const LIGHTNING_DEALS = [
+  { name:"Titan Analog Watch for Men", price:"₹2,295", orig:"₹3,995", disc:"43%", rating:"4.2", reviews:"34K+", emoji:"⌚", search:"titan analog watch men" },
+  { name:"Puma Men's Running Shoes", price:"₹1,499", orig:"₹3,999", disc:"63%", rating:"4.1", reviews:"23K+", emoji:"👟", search:"puma running shoes men" },
+  { name:"Pigeon Healthifry Digital Air Fryer", price:"₹2,799", orig:"₹5,995", disc:"53%", rating:"4.2", reviews:"41K+", emoji:"🍟", search:"pigeon air fryer" },
+  { name:"Samsung 32\" HD Ready Smart TV", price:"₹12,990", orig:"₹21,900", disc:"41%", rating:"4.1", reviews:"52K+", emoji:"📺", search:"samsung 32 inch smart tv" },
+  { name:"Fastrack Reflex Beat Smartwatch", price:"₹1,495", orig:"₹3,995", disc:"63%", rating:"3.9", reviews:"18K+", emoji:"⌚", search:"fastrack reflex smartwatch" },
+  { name:"Milton Thermosteel Flask 1000ml", price:"₹649", orig:"₹1,295", disc:"50%", rating:"4.4", reviews:"76K+", emoji:"🧴", search:"milton thermosteel flask" },
+];
+
+const TOP_RATED = [
+  { name:"Apple AirPods (2nd Gen) with Charging Case", price:"₹9,900", orig:"₹14,900", disc:"34%", rating:"4.7", reviews:"1.2L+", emoji:"🎧", search:"apple airpods 2nd gen" },
+  { name:"Levi's Men's Slim Fit Jeans", price:"₹1,199", orig:"₹2,999", disc:"60%", rating:"4.4", reviews:"67K+", emoji:"👖", search:"levis slim fit jeans men" },
+  { name:"Philips Air Purifier 1000i Series", price:"₹7,995", orig:"₹12,995", disc:"38%", rating:"4.3", reviews:"9K+", emoji:"💨", search:"philips air purifier" },
+  { name:"Instant Pot Duo 7-in-1 Pressure Cooker", price:"₹6,995", orig:"₹11,995", disc:"42%", rating:"4.6", reviews:"28K+", emoji:"🍲", search:"instant pot pressure cooker" },
+];
+
+function renderProductGrid(containerId, products) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = products.map(p => `
+    <a class="product-card" href="${buildAmazonUrl(p.search)}" target="_blank">
+      <div class="product-badge">-${p.disc}</div>
+      <div class="product-img-wrap">
+        <div class="product-img-placeholder">${p.emoji}</div>
+      </div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-rating">
+        <span class="stars">★★★★☆</span>
+        <span class="review-count">(${p.reviews})</span>
+      </div>
+      <div class="product-price">${p.price}</div>
+      <div class="product-price-orig">${p.orig}</div>
+      <div class="product-discount">Save ${p.disc} off</div>
+      <div class="prime-badge">✓ FREE Delivery</div>
+    </a>
+  `).join('');
+}
+
+// ── HERO SLIDER ────────────────────────────────────────────────────────────
+let currentSlide = 0;
+const totalSlides = 3;
+
+function slideHero(dir) {
+  currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+  goSlide(currentSlide);
+}
+
+function goSlide(idx) {
+  currentSlide = idx;
+  document.getElementById('hero-slides').style.transform = `translateX(-${idx * 100}%)`;
+  document.querySelectorAll('.hero-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === idx);
+  });
+}
+
+// Auto-advance slides
+setInterval(() => slideHero(1), 5000);
+
+// ── LOAD ALL DEAL FEEDS FROM YOUR BOT API ─────────────────────────────────
+// If your Flask bot is running, it will fetch real live deals
+// Falls back to sample data if bot API not available
+
+async function loadLiveDeals() {
+  try {
+    // Try to fetch from your bot's API
+    const r = await fetch('/api/deals', { signal: AbortSignal.timeout(3000) });
+    if (r.ok) {
+      const data = await r.json();
+      if (data && data.length > 0) {
+        // Convert bot deals to display format
+        const liveDeals = data.slice(0, 8).map(d => ({
+          name:    d.name,
+          price:   d.price ? `₹${parseInt(d.price).toLocaleString('en-IN')}` : 'Check Price',
+          orig:    d.mrp   ? `₹${parseInt(d.mrp).toLocaleString('en-IN')}` : '',
+          disc:    d.discount ? `${d.discount}%` : '',
+          rating:  d.rating || '4.0',
+          reviews: d.reviews || 'N/A',
+          emoji:   getCategoryEmoji(d.category),
+          asin:    d.asin,
+          search:  d.name.split(' ').slice(0,4).join(' '),
+        }));
+        renderProductGrid('hot-deals-grid', liveDeals);
+        return;
+      }
+    }
+  } catch(e) {
+    // Bot API not available — use sample data
+  }
+  // Fallback to sample data
+  renderProductGrid('hot-deals-grid', SAMPLE_DEALS);
+}
+
+function getCategoryEmoji(cat) {
+  const map = {
+    'Mobiles':'📱', 'Electronics':'🔌', 'Fashion':'👕', 'Kitchen':'🍳',
+    'Beauty':'💄', 'Toys':'🧸', 'Sports':'🏋️', 'Home':'🏠',
+    'Laptops':'💻', 'TV':'📺', 'Books':'📚',
+  };
+  for (const [k,v] of Object.entries(map)) {
+    if (cat && cat.includes(k)) return v;
+  }
+  return '🛒';
+}
+
+// ── INIT ──────────────────────────────────────────────────────────────────
+loadLiveDeals();
+renderProductGrid('lightning-grid', LIGHTNING_DEALS);
+renderProductGrid('toprated-grid', TOP_RATED);
+
+// Search on Enter
+document.getElementById('search-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') doSearch();
+});
+</script>
+</body>
+</html>
